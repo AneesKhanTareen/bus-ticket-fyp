@@ -59,7 +59,7 @@ function BookNow() {
   const onToken = async (token) => {
     try {
       dispatch(ShowLoading());
-      const response = await axiosInstance.post("/api/bookings/make-payment", {
+      const response = await axiosInstance.post("http://localhost:3010/api/bookings/make-payment", {
         token,
         amount: selectedSeats.length * bus.price,
       });
@@ -146,7 +146,7 @@ function BookNow() {
                   token={onToken}
                   amount={bus.price * selectedSeats.length * 100}
                   currency="MAD"
-                  stripeKey="pk_test_ZT7RmqCIjI0PqcpDF9jzOqAS"
+                  stripeKey="pk_test_51PWym0Rw8korjVWsejNk2eyOAom1XUKhH21FNGiqFe6hEoqDV3qVC1OlWGAxunoh0QJEOy9kuGDUvbywI5iJzWAj00ej2IUwDD"
                 >
                   <button
                     className={`${

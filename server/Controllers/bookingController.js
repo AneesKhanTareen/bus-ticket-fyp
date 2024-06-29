@@ -167,7 +167,7 @@ const PayWithStripe = async (req, res) => {
         amount: payment.amount,
       });
     } else {
-      res.status(500).send({
+      res.status(502).send({
         message: "Payment failed",
         data: error,
         success: false,
@@ -175,12 +175,14 @@ const PayWithStripe = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).send({
-      message: "Payment failed",
-      data: error,
-      success: false,
-    });
-  }
+  console.error("Stripe Payment Error:", error);
+  res.status(500).send({
+    message: "Payment failed",
+    data: error,
+    success: false,
+  });
+}
+
 };
 module.exports = {
   BookSeat,
